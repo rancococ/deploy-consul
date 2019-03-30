@@ -18,11 +18,14 @@ services:
       - ./volume/client1/logs:/tmp/consul/logs:rw
     command: agent -config-dir=/etc/consul/conf
     ports:
-      - "17300:8300"
-      - "17301:8301"
-      - "17302:8302"
-      - "17500:8500"
-      - "17600:8600"
+      - "17300:8300/tcp"
+      - "17301:8301/tcp"
+      - "17301:8301/udp"
+      - "17302:8302/tcp"
+      - "17302:8302/udp"
+      - "17500:8500/tcp"
+      - "17600:8600/tcp"
+      - "17600:8600/udp"
     networks:
       mynet:
         ipv4_address: 172.16.110.21
