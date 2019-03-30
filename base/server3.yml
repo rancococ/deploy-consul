@@ -1,0 +1,32 @@
+##########################################################################
+# 部署配置文件(base)
+# 本配置文件(xx.yml)中的变量(${xxx})是从同级目录下的.env文件中读取的
+##########################################################################
+# compose支持的版本2
+version: "2"
+services:
+  # server3
+  server3:
+    image: ${IMAGE_CONSUL}
+    container_name: "server3.${PRODUCT_NAME}.${COMPANY_NAME}"
+    hostname: "server3.${PRODUCT_NAME}.${COMPANY_NAME}"
+    restart: "always"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./volume/server3/conf:/etc/consul/conf:ro
+      - ./volume/server3/data:/tmp/consul/data:rw
+      - ./volume/server3/logs:/tmp/consul/logs:rw
+    command: agent -config-dir=/etc/consul/conf
+    ports:
+      - "38300:8300"
+      - "38301:8301"
+      - "38302:8302"
+      - "38500:8500"
+      - "38600:8600"
+    networks:
+      mynet:
+        ipv4_address: 172.16.110.13
+networks:
+  mynet:
+    external:
+      name: consul
