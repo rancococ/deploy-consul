@@ -109,18 +109,8 @@ fun_deploy_images() {
     chmod +x ${base_dir}/*/*.sh
     chmod 777 ${base_dir}/base/volume/server/data
     chmod 777 ${base_dir}/base/volume/server/logs
-    chmod 777 ${base_dir}/base/volume/server1/data
-    chmod 777 ${base_dir}/base/volume/server1/logs
-    chmod 777 ${base_dir}/base/volume/server2/data
-    chmod 777 ${base_dir}/base/volume/server2/logs
-    chmod 777 ${base_dir}/base/volume/server3/data
-    chmod 777 ${base_dir}/base/volume/server3/logs
     chmod 777 ${base_dir}/base/volume/client/data
     chmod 777 ${base_dir}/base/volume/client/logs
-    chmod 777 ${base_dir}/base/volume/client1/data
-    chmod 777 ${base_dir}/base/volume/client1/logs
-    chmod 777 ${base_dir}/base/volume/client2/data
-    chmod 777 ${base_dir}/base/volume/client2/logs
     return $re_ok
 }
 

@@ -1,0 +1,47 @@
+{
+    "watches": [{
+            "type": "key",
+            "key": "foo/bar/baz",
+            "handler_type": "script",
+            "args": ["/usr/bin/my-service-handler.sh", "-redis"]
+        },
+        {
+            "type": "keyprefix",
+            "prefix": "foo2/",
+            "handler_type": "script",
+            "args": ["/usr/bin/my-service-handler.sh", "-redis"]
+        },
+        {
+            "type": "services",
+            "handler_type": "http",
+            "handler_type": "script",
+            "args": ["/usr/bin/my-service-handler.sh", "-redis"]
+        },
+        {
+            "type": "nodes",
+            "handler_type": "script",
+            "args": ["/usr/bin/my-service-handler.sh", "-redis"]
+        },
+        {
+            "type": "service",
+            "service": "163",
+            "tag": "",
+            "passingonly": false,
+            "handler_type": "script",
+            "args": ["/usr/bin/my-service-handler.sh", "-redis"]
+        },
+        {
+            "type": "checks",
+            "service": "163",
+            "state": "",
+            "handler_type": "script",
+            "args": ["/usr/bin/my-service-handler.sh", "-redis"]
+        },
+        {
+            "type": "event",
+            "name": "test-event",
+            "handler_type": "script",
+            "args": ["/usr/bin/my-service-handler.sh", "-redis"]
+        }
+    ]
+}
