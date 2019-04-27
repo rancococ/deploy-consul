@@ -1,4 +1,4 @@
-﻿{
+{
     "bootstrap_expect": 3,
     "bind_addr": "0.0.0.0",
     "client_addr": "0.0.0.0",
@@ -14,7 +14,7 @@
     "log_level": "info",
     "log_rotate_bytes": 10485760,
     "log_rotate_duration": "24h",
-    "node_name": "dc-a1-server-00",
+    "node_name": "dc1-server-00",
     "ports": {
         "dns": 8600,
         "http": 8500,
@@ -24,9 +24,6 @@
         "server": 8300
     },
     "retry_join": [
-        "192.168.8.110:8301",
-        "192.168.8.120:8301",
-        "192.168.8.130:8301"
     ],
     "retry_interval": "10s",
     "retry_join_wan": [
