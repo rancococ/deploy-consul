@@ -9,20 +9,18 @@
 # --list    : 查看容器
 ##########################################################################
 
+# set -x
 set -e
-
-#
-# set author info
-#
-date1=`date "+%Y-%m-%d %H:%M:%S"`
-date2=`date "+%Y%m%d%H%M%S"`
-author="rancococ@qq.com"
-
 set -o noglob
 
-#
-# font and color 
-#
+##########################################################################
+# set author info
+date1=`date "+%Y-%m-%d %H:%M:%S"`
+date2=`date "+%Y%m%d%H%M%S"`
+author="yong.ran@cdjdgm.com"
+
+##########################################################################
+# set font and color 
 bold=$(tput bold)
 underline=$(tput sgr 0 1)
 reset=$(tput sgr0)
@@ -33,9 +31,8 @@ yellow=$(tput setaf 3)
 blue=$(tput setaf 4)
 white=$(tput setaf 7)
 
-#
+##########################################################################
 # header and logging
-#
 header() { printf "\n${underline}${bold}${blue}► %s${reset}\n" "$@"; }
 header2() { printf "\n${underline}${bold}${blue}♦ %s${reset}\n" "$@"; }
 info() { printf "${white}➜ %s${reset}\n" "$@"; }
@@ -50,9 +47,8 @@ trap "error '******* Caught sigint signal. Stopping...*******'; exit 2" sigint
 
 set +o noglob
 
-#
+##########################################################################
 # entry base dir
-#
 pwd=`pwd`
 base_dir="${pwd}"
 source="$0"
@@ -64,20 +60,15 @@ done
 base_dir="$( cd -P "$( dirname "$source" )" && pwd )"
 cd ${base_dir}
 
-#
+##########################################################################
 # envirionment
-#
-
-# set docker compose info
 self_name=`basename $0  .sh`
 compose_bin=/usr/local/bin/docker-compose
 compose_yml=${base_dir}/${self_name}.yml
 project_dir=${base_dir}
 project_name=${self_name}
 
-#
-# args flag
-#
+# init args flag
 arg_help=
 arg_setup=
 arg_start=
@@ -86,9 +77,8 @@ arg_down=
 arg_list=
 arg_empty=true
 
-#
+##########################################################################
 # parse parameter
-#
 # echo $@
 # 定义选项， -o 表示短选项 -a 表示支持长选项的简单模式(以 - 开头) -l 表示长选项 
 # a 后没有冒号，表示没有参数
@@ -177,13 +167,14 @@ usage=$"`basename $0` [-h|--help] [--setup] [--start] [--stop] [--down] [--list]
 "
 
 
+##########################################################################
 # execute docker-compose command
 fun_execute_compose_command() {
     command=$1
     header "execute command:[docker-compose --file ${compose_yml} ${command}]"
-    info "execute command [docker-compose --file ${compose_yml} ${command}] start..."
+    info "execute command [docker-compose --file ${compose_yml} ${command}] start."
     ${compose_bin} --file ${compose_yml} --project-name ${project_name} --project-directory ${project_dir} ${command}
-    success "execute command [docker-compose --file ${compose_yml} ${command}] end..."
+    success "execute command [docker-compose --file ${compose_yml} ${command}] end."
     return 0
 }
 
