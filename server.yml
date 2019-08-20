@@ -18,3 +18,5 @@ services:
       - ./volume/server/logs:/tmp/consul/logs:rw
     command: agent -bind="${HOST_IP}" -datacenter="${DATA_CENTER}" -node="${NODE_NAME}" -config-dir=/etc/consul/conf -data-dir=/tmp/consul/data -log-file=/tmp/consul/logs/consul.log -log-level=${LOG_LEVEL} -retry-join="${JOIN_ADDR1}" -retry-join="${JOIN_ADDR2}" -retry-join="${JOIN_ADDR3}"
     network_mode: "host"
+    extra_hosts:
+      - "server.${PRODUCT_NAME}.${COMPANY_NAME}:${HOST_IP}"
