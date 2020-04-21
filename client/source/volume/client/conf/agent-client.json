@@ -13,6 +13,7 @@
     "log_level": "info",
     "log_rotate_bytes": 10485760,
     "log_rotate_duration": "24h",
+    "log_rotate_max_files": 10,
     "node_name": "dc1-client-00",
     "ports": {
         "dns": 7600,

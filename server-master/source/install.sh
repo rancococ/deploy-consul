@@ -145,8 +145,8 @@ fun_install() {
     "${base_dir}"/deploy.sh --load="${base_dir}"/images.tgz
     #"${base_dir}"/deploy.sh --deploy="${base_dir}"/data.war
 
-    info "setup application"
-    "${base_dir}"/compose.sh --setup
+    #info "setup application"
+    #"${base_dir}"/compose.sh --setup
 
     echo ""
     success "successfully installed application."
