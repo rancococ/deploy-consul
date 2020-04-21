@@ -83,6 +83,20 @@
                 "timeout": "10s",
                 "tls_skip_verify": false
             }
+        },
+        {
+            "type": "event",
+            "name": "test-event",
+            "handler_type": "http",
+            "http_handler_config": {
+                "path": "http://127.0.0.1:8080/watch",
+                "method": "POST",
+                "header": {
+                    "x-foo": ["bar", "baz"]
+                },
+                "timeout": "10s",
+                "tls_skip_verify": false
+            }
         }
     ]
 }

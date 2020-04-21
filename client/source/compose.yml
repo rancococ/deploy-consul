@@ -5,18 +5,20 @@
 # compose支持的版本2
 version: "2"
 services:
-  # server
-  server:
-    image: ${IMAGE_CONSUL}
-    container_name: "server.${PRODUCT_NAME}.${COMPANY_NAME}"
-    hostname: "server.${PRODUCT_NAME}.${COMPANY_NAME}"
+  # client
+  client:
+    image: "${IMAGE_CONSUL}"
+    container_name: "client.${PRODUCT_NAME}.${COMPANY_NAME}"
+    hostname: "client.${PRODUCT_NAME}.${COMPANY_NAME}"
     restart: "always"
+    env_file:
+      - ./consul.env
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./volume/server/conf:/etc/consul/conf:ro
-      - ./volume/server/data:/tmp/consul/data:rw
-      - ./volume/server/logs:/tmp/consul/logs:rw
+      - ./volume/client/conf:/etc/consul/conf:ro
+      - ./volume/client/data:/tmp/consul/data:rw
+      - ./volume/client/logs:/tmp/consul/logs:rw
     command: agent -bind="${HOST_IP}" -datacenter="${DATA_CENTER}" -node="${NODE_NAME}" -config-dir=/etc/consul/conf -data-dir=/tmp/consul/data -log-file=/tmp/consul/logs/consul.log -log-level=${LOG_LEVEL} -retry-join="${JOIN_ADDR1}" -retry-join="${JOIN_ADDR2}" -retry-join="${JOIN_ADDR3}"
     network_mode: "host"
     extra_hosts:
-      - "server.${PRODUCT_NAME}.${COMPANY_NAME}:${HOST_IP}"
+      - "client.${PRODUCT_NAME}.${COMPANY_NAME}:${HOST_IP}"

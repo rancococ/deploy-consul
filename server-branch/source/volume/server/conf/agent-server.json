@@ -1,4 +1,6 @@
 {
+    "advertise_addr": "0.0.0.0",
+    "advertise_addr_wan" : "0.0.0.0",
     "bootstrap_expect": 3,
     "bind_addr": "0.0.0.0",
     "client_addr": "0.0.0.0",
@@ -14,6 +16,7 @@
     "log_level": "info",
     "log_rotate_bytes": 10485760,
     "log_rotate_duration": "24h",
+    "log_rotate_max_files": 10,
     "node_name": "dc1-server-00",
     "ports": {
         "dns": 8600,
@@ -29,6 +32,8 @@
     "retry_join_wan": [
     ],
     "retry_interval_wan": "10s",
+    "serf_lan": "0.0.0.0",
+    "serf_wan": "0.0.0.0",
     "server": true,
     "ui": true,
     "watches": []
