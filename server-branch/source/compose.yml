@@ -18,7 +18,7 @@ services:
       - ./volume/server/conf:/etc/consul/conf:ro
       - ./volume/server/data:/tmp/consul/data:rw
       - ./volume/server/logs:/tmp/consul/logs:rw
-    command: agent -advertise="${ADVERTISE_LAN_ADDR}" -advertise-wan="${ADVERTISE_WAN_ADDR}" -datacenter="${DATA_CENTER}" -node="${NODE_NAME}" -config-dir=/etc/consul/conf -data-dir=/tmp/consul/data -log-file=/tmp/consul/logs/consul.log -log-level=${LOG_LEVEL} -retry-join="${JOIN_LAN_ADDR1}" -retry-join="${JOIN_LAN_ADDR2}" -retry-join="${JOIN_LAN_ADDR3}" -retry-join-wan="${JOIN_WAN_ADDR1}" -retry-join-wan="${JOIN_WAN_ADDR2}" -retry-join-wan="${JOIN_WAN_ADDR3}" -serf-lan-bind="${SERF_LAN_ADDR}" -serf-wan-bind="${SERF_WAN_ADDR}"
+    command: agent -advertise="${ADVERTISE_LAN_ADDR}" -advertise-wan="${ADVERTISE_WAN_ADDR}" -bootstrap-expect="${BOOTSTRAP_EXPECT}" -datacenter="${DATA_CENTER}" -node="${NODE_NAME}" -config-dir=/etc/consul/conf -data-dir=/tmp/consul/data -log-file=/tmp/consul/logs/consul.log -log-level=${LOG_LEVEL} -retry-join="${JOIN_LAN_ADDR1}" -retry-join="${JOIN_LAN_ADDR2}" -retry-join="${JOIN_LAN_ADDR3}" -retry-join-wan="${JOIN_WAN_ADDR1}" -retry-join-wan="${JOIN_WAN_ADDR2}" -retry-join-wan="${JOIN_WAN_ADDR3}" -serf-lan-bind="${SERF_LAN_ADDR}" -serf-wan-bind="${SERF_WAN_ADDR}"
     network_mode: "host"
     extra_hosts:
       - "branch.${PRODUCT_NAME}.${COMPANY_NAME}:${HOST_IP}"
